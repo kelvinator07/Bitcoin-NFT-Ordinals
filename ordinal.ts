@@ -1,9 +1,9 @@
-import { Inscription } from "ordinalsbot";
+import { Inscription, InscriptionEnv } from "ordinalsbot";
 
 // if no parameter given, default environment is 'live'
 let inscription = new Inscription(
     process.env.API_KEY || "",
-    "dev"
+    process.env.NEXT_PUBLIC_API_ENV as InscriptionEnv
 );
 
 const ORDER_FEE = 11;
@@ -59,4 +59,14 @@ const getInscriptionStatus = async (inscriptionId: string): Promise<any> => {
     }
 };
 
-export { inscribeImage, inscribeText, getInscriptionStatus };
+const getInventory = async (): Promise<any> => {
+    try {
+        const response = await inscription.getInventory();
+        return response;
+    } catch (error: any) {
+        console.error(`${error.status} | ${error.message}`);
+        return error.message;
+    }
+};
+
+export { inscribeImage, inscribeText, getInscriptionStatus, getInventory };

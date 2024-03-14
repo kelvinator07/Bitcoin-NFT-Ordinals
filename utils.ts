@@ -1,5 +1,3 @@
-"use client"; // This is a client component
-
 const getBase64 = (file: File): Promise<string> => {
     return new Promise((resolve) => {
         let reader = new FileReader();
