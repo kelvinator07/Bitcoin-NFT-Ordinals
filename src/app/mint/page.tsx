@@ -6,11 +6,7 @@ import { isEmail } from "validator";
 import { sendBtcTransaction, BitcoinNetworkType } from "sats-connect";
 
 import { inscribeText, inscribeImage } from "../../../ordinal";
-import {
-    getBase64,
-    getFromLocalStorage,
-    addToLocalStorage,
-} from "../../../utils";
+import { getBase64 } from "../../../utils";
 import { useLocalStorage } from "../../../useLocalStorage";
 
 interface ValidationResult {
@@ -28,7 +24,7 @@ const required: ValidationResult = (value: string) => {
 };
 
 const validEmail: ValidationResult = (value: string) => {
-    if (!isEmail(value)) {
+    if (value && !isEmail(value)) {
         return (
             <div className="invalid-feedback d-block">
                 This is not a valid email.

@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div className="container-fluid">
                   <a className="navbar-brand" href="#">
@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
             </nav>
         {children}
-        {/* <Analytics /> */}
+        <Analytics />
         </body>
     </html>
   );

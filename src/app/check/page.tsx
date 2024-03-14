@@ -10,7 +10,7 @@ interface ValidationResult {
 }
 
 const required: ValidationResult = (value: string) => {
-    if (!value) {
+    if (value && value.length < 30) {
         return (
             <div className="invalid-feedback d-block">
                 This field is required!
